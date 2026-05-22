@@ -1,0 +1,10 @@
+.stats {
+    padding: 8px 12px;
+}
+
+.label {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8em;
+    padding-bottom: 8px;
+}

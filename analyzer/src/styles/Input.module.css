@@ -1,0 +1,22 @@
+
+.input {
+    border: 1px solid #dde8da;
+    width: 100%;
+    font-size: .9rem;
+    padding: .6rem;
+    border-radius: .4rem;
+    color: #ADABA5;
+    transition: .3s;
+    box-shadow: 0 2px 8px rgba(60, 100, 70, 0.10)
+}
+
+.input:not(:disabled):hover,
+.input:not(:disabled):focus {
+    outline: none;
+    border-color: #5A9E6F;
+    background-color: white;
+}
+
+.input::placeholder {
+    color: #adaba5bd;
+}
