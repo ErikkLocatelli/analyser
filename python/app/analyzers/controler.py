@@ -24,15 +24,18 @@ def run(repo: dict) -> dict:
     all_methods = [m for f in cc_results for m in f.get("methods", [])]
     all_classes = [c for f in cbo_results for c in f.get("classes", [])]
 
+    cbo_avg = round(sum(c["cbo"] for c in all_classes) / len(all_classes), 2) if all_classes else 0
+
     summary = {
         "total_files": len(java_files),
         "total_methods": len(all_methods),
         "cc_avg": round(sum(m["complexity"] for m in all_methods) / len(all_methods), 2) if all_methods else 0,
         "cc_worst": max(all_methods, key=lambda m: m["complexity"]) if all_methods else None,
         "cc_distribution": dict(Counter(m["score"] for m in all_methods)),
-        "cbo_avg": round(sum(c["cbo"] for c in all_classes) / len(all_classes), 2) if all_classes else 0,
+        "cbo_avg": cbo_avg,
         "dryness_score": dry_results["score"],
         "duplicate_blocks": dry_results["total_duplicate_blocks"],
+        "cbo_score": cbo.classify_cbo(cbo_avg),
     }
 
     flagged_files = {
@@ -47,10 +50,10 @@ def run(repo: dict) -> dict:
     }
 
     return {
-    "module": "Maintainability",
-    "summary": summary,
-    "flagged_files": flagged_files,
-    "duplication": dry_results,
-    "cbo": cbo_results,                        
-    "cyclomatic_complexity": cc_results,    
+        "module": "Maintainability",
+        "summary": summary,
+        "flagged_files": flagged_files,
+        "duplication": dry_results,
+        "cbo": cbo_results,                        
+        "cyclomatic_complexity": cc_results,    
     }
