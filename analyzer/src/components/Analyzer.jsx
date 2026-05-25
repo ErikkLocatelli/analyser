@@ -182,7 +182,7 @@ const Analyzer = () => {
               </div>
             </Stats>
 
-            <Stats text={"Acoplamento entre objetos (cbo)"} icon={"hub"} level={full?.result1?.summary.cc_worst.score}>
+            <Stats text={"Acoplamento entre objetos (cbo)"} icon={"hub"} level={full?.result1?.summary.cbo_avg}>
               <BoardItem left={"Média geral"} right={full?.result1?.summary.cbo_avg}/>
               <BoardItem left={"Arquivos críticos"} right={full?.result1?.flagged_files.high_cbo.length + " arquivos"}/>
             </Stats>
