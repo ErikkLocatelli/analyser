@@ -12,3 +12,7 @@
     gap: 5px;
     font-size: .75m;
 }
+
+.button:disabled {
+    background-color: #5a9e7077;
+}

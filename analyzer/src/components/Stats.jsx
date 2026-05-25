@@ -1,38 +1,43 @@
-import React from 'react'
+import React, { Children } from 'react'
 
 import StatsBar from './StatsBar'
+
 import styles from '../styles/Stats.module.css'
 
-const Stats = () => {
+const Stats = ({icon, text, level, children}) => {
 
-    const analises = [{
-        analise: " conformidade lint", 
-        porcent: 91
-    },{
-        analise: "cobertura de testes", 
-        porcent: 82
-    },{
-       analise: "documentação", 
-       porcent: 67 
-    }, {
-       analise: "complexidade", 
-       porcent: 54
-    }, {
-       analise: "duplicação", 
-       porcent: 12
-    }     
-]
+    const changeColor = () => {
+        if(level === "LOW") return "#c0ddc8"
+        if (level === "MODERATE") return "#b99425a4"
+        if (level === "HIGH" || level === "CRITICAL") return  "#e76864c5"
+    }
 
-
-
+    const changeLetter = () => {
+        if(level === "LOW") return "#5A9E6F"
+        if (level === "MODERATE") return "#705915"
+        if (level === "HIGH") return  "#af2622"
+    }
   return (
     <section className={styles.stats}>
-        <p className={styles.p}>Estísticas analisadas</p>
-        <div className={styles.div}>
-            {analises.map(item => (
-                <StatsBar key={item.porcent} analise={item.analise} progress={item.porcent}/>
-            ))}
+        <div className={styles.type}>
+            <div className={styles.right}>
+                <span className="material-symbols-outlined">{icon}</span>
+                <p>{text}</p>
+            </div>
+            <div className={styles.tag}
+                style={{
+                    background: changeColor(), 
+                    color: changeLetter(), 
+                    border: changeColor()
+                }}
+            >
+                {level}
+            </div>
         </div>
+        <div className={styles.board}>
+            {children}
+        </div>
+    
     </section>
   )
 }

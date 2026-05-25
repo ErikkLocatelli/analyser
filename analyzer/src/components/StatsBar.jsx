@@ -3,7 +3,7 @@ import React from 'react'
 import styles from '../styles/StatsBar.module.css'
 
 
-const StatsBar = ({analise ,progress}) => {
+const StatsBar = ({analise ,progress = 0, total}) => {
 
 
     const switchProgressBar = () => {
@@ -14,13 +14,15 @@ const StatsBar = ({analise ,progress}) => {
         return "#a0c9ab"
     }
 
-
+    const progressAnal = () => {
+      return ((progress * 100) / total)
+    }
 
   return (
     <div className={styles.stats}>
       <div className={styles.label}>
         <span>{analise}</span>
-        <span>{`${progress}%`}</span>
+        <span>{`${progress}${total === 100 ? "%" : ""}`}</span>
       </div>
        <div
         style={{
@@ -33,7 +35,7 @@ const StatsBar = ({analise ,progress}) => {
       >
         <div
           style={{
-            width: `${progress}%`,
+            width: `${progressAnal()}%`,
             height: '100%',
             background: `${switchProgressBar()}`,
             transition: '0.3s',

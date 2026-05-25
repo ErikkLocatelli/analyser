@@ -37,6 +37,50 @@
     display: flex;
     flex-direction: row;
     gap: 15px;
+    margin-top: 2em;
+}
+
+.general {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.general > p {
+    padding-top: 1em;
+    margin-bottom: -1.5em;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+}
+
+.score {
+    margin-top: .9em;
+    padding-top: .9em;
+    border-top: 1px solid #dde8da;  
+}
+
+.score > p {
+    font-size: .8em;
+    color: #ADABA5;
+    padding-bottom: .4em;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+}
+
+.boardItem {
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.boardItem > * {
+    flex: 1
 }
 
 .animeLeft {

@@ -31,7 +31,7 @@ def clone_repo(repo_url: str):
     try:
 
         subprocess.run(
-            ["git", "clone", "--depth", "1", repo_url, repo_path],
+            ["git", "clone", "-c", "core.longpaths=true", "--depth", "1", repo_url, repo_path],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

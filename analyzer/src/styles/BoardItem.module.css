@@ -1,0 +1,27 @@
+.board {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #eaf2e7;
+    border-radius: .4rem;
+    color: #2e6b45; 
+    font-size: .8em;
+   box-shadow: 0 1px 3px rgba(60, 100, 70, 0.07);
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tag {
+    border-radius: .4rem;
+    border: 1px solid #c0ddc8;
+    padding: .3em .5rem;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(60, 100, 70, 0.07);
+    font-size: .7em;
+}
