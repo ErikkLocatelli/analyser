@@ -101,6 +101,7 @@ const Analyzer = () => {
             url: url,
             name: data?.name,
             result1: full?.result1,
+            result2: full?.result2,
             result3: full?.result3,
             cbo_all: full?.result1?.cbo,
             cc_all: full?.result1?.cyclomatic_complexity
@@ -150,7 +151,7 @@ const Analyzer = () => {
             </div>
           </div>}
 
-        {data && data.language === "Java" && !analyze && 
+        {data  && !analyze && 
           <Button 
             style={{margin: 'auto', marginTop: "2.5rem"}}
             text={"Analise completa"} 

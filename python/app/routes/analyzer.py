@@ -6,6 +6,7 @@ from app.services.clone_repo import clone_repo
 from app.services.report import build_report
 from app.analyzers import controler
 from app.testCoverage import testCoverage
+from app.integration import benchmark
 
 router = APIRouter()
 
@@ -20,12 +21,14 @@ def analyze_repo(data: RepoRequest):
     repo = clone_repo(data.url)
    
     result1 = controler.run(repo)
+    result2 = benchmark.run(repo)
     result3 = testCoverage.run(repo)
 
     return {
         "message": "Repo clonado com sucesso",
         "path": repo["repo_path"], 
         "result1": result1,
+        "result2": result2,
         "result3": result3,
     }
 

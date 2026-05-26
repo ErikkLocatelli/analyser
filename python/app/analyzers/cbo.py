@@ -12,24 +12,22 @@ def analyze_file(filepath: str) -> dict:
     for _, class_decl in tree.filter(javalang.tree.ClassDeclaration):
         coupled_classes = set()
 
-        # 1. Imports diretos
+
         for imp in tree.imports:
-            # Ignora java.* e javax.* (stdlib)
+            
             if not imp.path.startswith(("java.", "javax.")):
                 coupled_classes.add(imp.path.split(".")[-1])
 
-        # 2. Tipos dos campos (atributos)
+  
         for field in class_decl.fields:
             _extract_type(field.type, coupled_classes)
 
-        # 3. Tipos nos métodos (parâmetros e retorno)
         for method in class_decl.methods:
             if method.return_type:
                 _extract_type(method.return_type, coupled_classes)
             for param in method.parameters:
                 _extract_type(param.type, coupled_classes)
 
-        # Remove a própria classe
         coupled_classes.discard(class_decl.name)
 
         results.append({
